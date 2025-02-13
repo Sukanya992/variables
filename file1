@@ -8,21 +8,22 @@ pipeline {
 
     stages {
         stage('Build') {
+            environment {
+                name = 'xyz'   
+            }
             steps {
-                environment{
-                      name='xyz'
-                }
-                sh "echo Building application = ${env.name}"  // ✅ Use double quotes
-                sh "echo Building application = ${env.age}"
-                 sh "echo Build Number: ${env.BUILD_NUMBER}"
+                sh "echo Building application = ${env.name}"  
+                sh "echo Age = ${env.age}"
+                sh "echo Build Number: ${env.BUILD_NUMBER}"
             }
         }
-stage('Test') {
+        
+        stage('Test') {
             steps {
-                sh "echo Building application = ${env.name}"  // ✅ Use double quotes
-                sh "echo Building application = ${env.age}"
-                 sh "echo Build Number: ${env.BUILD_NUMBER}"
+                sh "echo Application Name = ${env.name}"  
+                sh "echo Age = ${env.age}" 
+                sh "echo Build Number: ${env.BUILD_NUMBER}"
             }
+        }
     }
-}
 }
