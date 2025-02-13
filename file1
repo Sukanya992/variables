@@ -1,20 +1,17 @@
-pipeline{
-   agent any {
-     environment {
-     name='abc'
-     age=10
-     }
-     
-       stages{
-           stage ('Build') {
-                  steps {
-                  
-                 sh 'echo Building application= ${env.name}'
-                 sh 'echo Building application= ${env.age}'
-                 
-                 }
-                 }
-              }
-              }
-          }
-          
+pipeline {
+    agent any
+
+    environment {
+        name = 'abc'   
+        age = '10'     
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                sh "echo Building application = ${env.name}"  // ✅ Use double quotes
+                sh "echo Building application = ${env.age}"
+            }
+        }
+    }
+}
